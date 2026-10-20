@@ -73,13 +73,28 @@ mpirun -n 4 ./bc_norm 1000 50 100 20 0
 mpirun -n 1 ./bc_norm 1000 50 100 20 1
 ```
 
-Exercise sizes on AION (inside a job or an interactive allocation):
+## Scaling benchmark on AION
+
+`submit.sh` runs every combination of n, `bc_parallel` and number of ranks
+(1 2 4 8 16 32 64 128), several repetitions each. Every raw output is kept in
+`outputs/raw/` and one line per run is added to `outputs/results.csv`.
 
 ```bash
-for i in 1 2 4 8 16 32 64 128; do
-    srun -n $i ./bc_norm 128000 500 1000 20 1 > out_$i
-done
+sbatch -J bc_norm submit.sh              # n = 128000 (exercise), 640000, 1280000
+tail -f slurm-<jobid>.out                # progress
 ```
+
+Settings can be changed from the environment, for example inside an
+interactive allocation:
+
+```bash
+N_LIST="128000" REPS=5 bash submit.sh
+```
+
+(`N_LIST`, `P_LIST`, `BC_LIST`, `REPS`; see the top of `submit.sh`.) Delete
+`outputs/results.csv` to start from scratch, otherwise new runs are appended.
+Keep `n` below about 4 000 000 (with m = 500 the library multiplies `n*m` as
+an `int`).
 
 ## Output
 
