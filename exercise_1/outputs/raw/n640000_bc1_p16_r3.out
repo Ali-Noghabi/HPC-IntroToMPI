@@ -1,0 +1,7 @@
+Norm of the vector d = A*B*c is : 109607.1911992125
+B*c mode (1 = parallel, 0 = rank 0)  : 1
+Number of ranks                      : 16
+Max initialization time over ranks   : 1.864377 seconds
+Max calculation time over ranks      : 0.019739 seconds
+Max reduction time over ranks        : 0.428840 seconds
+Max total time over ranks            : 1.884239 seconds

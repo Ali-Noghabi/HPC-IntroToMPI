@@ -1,0 +1,41 @@
+[2026-10-20T20:45:48.341] error: Detected 1 oom_kill event in StepId=16062401.53. Some of the step tasks have been OOM Killed.
+[aion-0192:1275915:0:1275915]      cma_ep.c:81   process_vm_readv(pid=1275914 {0x7ff318d47010,524288}-->{0x7f59ac22a010,524288}) returned -1: No such process
+==== backtrace (tid:1275915) ====
+ 0 0x00000000000036e3 uct_cma_ep_tx_error()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/uct/sm/scopy/cma/cma_ep.c:81
+ 1 0x0000000000003a18 uct_cma_ep_tx()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/uct/sm/scopy/cma/cma_ep.c:113
+ 2 0x000000000001dd05 uct_scopy_ep_progress_tx()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/uct/sm/scopy/base/scopy_ep.c:151
+ 3 0x0000000000021a11 ucs_arbiter_dispatch_nonempty()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/ucs/datastruct/arbiter.c:321
+ 4 0x000000000001d829 ucs_arbiter_dispatch()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/ucs/datastruct/arbiter.h:386
+ 5 0x00000000000221c7 ucs_callbackq_slow_proxy()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/ucs/datastruct/callbackq.c:404
+ 6 0x0000000000047d3a ucs_callbackq_dispatch()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/ucs/datastruct/callbackq.h:211
+ 7 0x0000000000047d3a uct_worker_progress()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/uct/api/uct.h:2777
+ 8 0x0000000000047d3a ucp_worker_progress()  /tmp/easybuild/aion/2023b/epyc/build/UCX/1.15.0/GCCcore-13.2.0/ucx-1.15.0/src/ucp/core/ucp_worker.c:2889
+ 9 0x00000000000049ef mca_pml_ucx_recv()  ???:0
+10 0x0000000000085485 PMPI_Recv()  ???:0
+11 0x0000000000401664 main()  ???:0
+12 0x00000000000235c5 __libc_start_main()  ???:0
+13 0x0000000000401b3e _start()  ???:0
+=================================
+[aion-0192:1275915] *** Process received signal ***
+[aion-0192:1275915] Signal: Aborted (6)
+[aion-0192:1275915] Signal code:  (-6)
+[aion-0192:1275915] [ 0] /lib64/libc.so.6(+0x375f0)[0x7ff37d0615f0]
+[aion-0192:1275915] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x7ff37d06156f]
+[aion-0192:1275915] [ 2] /lib64/libc.so.6(abort+0x127)[0x7ff37d04bee5]
+[aion-0192:1275915] [ 3] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libucs.so.0(+0x2852b)[0x7ff37a42652b]
+[aion-0192:1275915] [ 4] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libucs.so.0(ucs_log_default_handler+0x7d4)[0x7ff37a42a474]
+[aion-0192:1275915] [ 5] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libucs.so.0(ucs_log_dispatch+0xdd)[0x7ff37a42a7dd]
+[aion-0192:1275915] [ 6] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/ucx/libuct_cma.so.0(+0x36e3)[0x7ff379f346e3]
+[aion-0192:1275915] [ 7] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/ucx/libuct_cma.so.0(uct_cma_ep_tx+0x198)[0x7ff379f34a18]
+[aion-0192:1275915] [ 8] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libuct.so.0(uct_scopy_ep_progress_tx+0x55)[0x7ff37a479d05]
+[aion-0192:1275915] [ 9] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libucs.so.0(ucs_arbiter_dispatch_nonempty+0xa1)[0x7ff37a41fa11]
+[aion-0192:1275915] [10] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libuct.so.0(uct_scopy_iface_progress+0x59)[0x7ff37a479829]
+[aion-0192:1275915] [11] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libucs.so.0(+0x221c7)[0x7ff37a4201c7]
+[aion-0192:1275915] [12] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/UCX/1.15.0-GCCcore-13.2.0/lib64/libucp.so.0(ucp_worker_progress+0x5a)[0x7ff37a4dfd3a]
+[aion-0192:1275915] [13] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/OpenMPI/4.1.6-GCC-13.2.0/lib/openmpi/mca_pml_ucx.so(mca_pml_ucx_recv+0x11f)[0x7ff37a56f9ef]
+[aion-0192:1275915] [14] /opt/apps/easybuild/systems/aion/rhel810-20250803/2023b/epyc/software/OpenMPI/4.1.6-GCC-13.2.0/lib/libmpi.so.40(MPI_Recv+0x155)[0x7ff37d8f8485]
+[aion-0192:1275915] [15] /mnt/aiongpfs/users/aabdollahiannoghabi/mpi/HPC-IntroToMPI/exercise_1/./bc_norm[0x401664]
+[aion-0192:1275915] [16] /lib64/libc.so.6(__libc_start_main+0xe5)[0x7ff37d04d5c5]
+[aion-0192:1275915] [17] /mnt/aiongpfs/users/aabdollahiannoghabi/mpi/HPC-IntroToMPI/exercise_1/./bc_norm[0x401b3e]
+[aion-0192:1275915] *** End of error message ***
+srun: error: aion-0192: task 0: Out Of Memory

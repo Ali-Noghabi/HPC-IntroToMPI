@@ -1,0 +1,5 @@
+[2026-10-20T20:48:44.839] error: Detected 1 oom_kill event in StepId=16062401.101. Some of the step tasks have been OOM Killed.
+srun: error: aion-0192: task 0: Out Of Memory
+[2026-10-20T20:48:45.838] error:  mpi/pmix_v6: _errhandler: aion-0192 [0]: pmixp_client_v2.c:226: Error handler invoked: status = -61, source = [slurm.pmix.16062401.101:0]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-10-20T20:48:45.867] error: *** STEP 16062401.101 ON aion-0192 CANCELLED AT 2026-10-20T20:48:45 DUE to SIGNAL Killed ***
