@@ -36,4 +36,4 @@ git submodule update --init
 
 | Exercise | Description | Status |
 |----------|-------------|--------|
-| [exercise_1](exercise_1/) | MPI matrix–matrix–vector product and norm, scaling on AION | part 1 done (x = B·c, ‖x‖) |
+| [exercise_1](exercise_1/) | MPI matrix–matrix–vector product and norm, scaling on AION | code done, scaling runs on AION to do |
