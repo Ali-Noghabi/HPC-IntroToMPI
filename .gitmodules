@@ -1,0 +1,3 @@
+[submodule "IntroductionToMPI"]
+	path = IntroductionToMPI
+	url = https://github.com/mbarborini/IntroductionToMPI.git
