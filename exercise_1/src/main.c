@@ -81,9 +81,11 @@ int main(int argc, char *argv[]) {
     // Distribute matrix B to all ranks.
     if (mpi_rank == 0) {
       for (int i = 1; i < num_of_ranks; i++) {
-        int rows_i = rows_of_rank(i, m, num_of_ranks);
+        int rows_i = num_of_matrix_elements_per_rank + (i < num_of_residual_elements ? 1 : 0);
+        int first_row_i = i * num_of_matrix_elements_per_rank + (i < num_of_residual_elements ? i : num_of_residual_elements);
+
         if (rows_i > 0) {
-          MPI_Send(&matrix_b[first_row_of_rank(i, m, num_of_ranks)][0],
+          MPI_Send(&matrix_b[first_row_i][0],
                    rows_i * k, MPI_DOUBLE, i, i, MPI_COMM_WORLD);
         }
       }
@@ -127,7 +129,7 @@ int main(int argc, char *argv[]) {
 
   // Final time
   double t3 = MPI_Wtime();
-  
+
   // Compute time differences and print them.
   // The slowest rank decides the real time, so we take the max over the ranks
   double times[4];
